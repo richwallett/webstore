@@ -19,7 +19,7 @@ class CartsController < ApplicationController
 
   def destroy
     cart = session[:current_cart]
-    cart.delete_at(cart.index(params[:value].to_i))
+    cart.delete_at(cart.index(params[:value].to_i)) #REV: .delete(params[:value].to_i)
     session[:current_cart] = cart
     redirect_to carts_path
   end
@@ -28,7 +28,7 @@ class CartsController < ApplicationController
 
   def signed_in?
     unless cookies[:current_user]
-      insert_into_flash_notices("Please sign in.")
+      insert_into_flash_notices("Please sign in.") #REV: you guys are so "flashy"
       redirect_to products_path
     end
   end
