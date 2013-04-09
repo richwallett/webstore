@@ -1,5 +1,5 @@
 <h1>My Cart</h1>
-<% total = 0%>
+<% total = 0 %>
 <% session[:current_cart].each do |item| %>
 <% display_product = Product.find_by_id(item)%>
 <%=  "#{display_product.name}   #{display_product.price}" %>
