@@ -1,0 +1,12 @@
+<h1>My Cart</h1>
+<% total = 0%>
+<% session[:current_cart].each do |item| %>
+<% display_product = Product.find_by_id(item)%>
+<%=  "#{display_product.name}   #{display_product.price}" %>
+<%= button_to "delete item", carts_path(:value => display_product.id), :method => :delete %>
+<% total += display_product.price%>
+<br>
+<%end%>
+
+<%= "Total: #{total}"%>
+<%= button_to "Place Order", orders_path %>

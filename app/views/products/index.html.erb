@@ -1,0 +1,14 @@
+<h1>Products</h1>
+
+<% Product.all.each do |product| %>
+<b><%= product.name %></b>
+<%= product.price %>
+<%= product.description %>
+<%= button_to "add to cart", carts_path(:value => product.id), :method => :post%>
+
+<br>
+
+<%end%>
+<% if session[:current_cart]%>
+<%= button_to "Checkout", carts_path, :method => :get %>
+<% end %>
